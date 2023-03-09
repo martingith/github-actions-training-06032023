@@ -16,7 +16,7 @@ jobs:
         with:
           images: ${{github.repository}}
           tags: |
-            type=raw,value=${{inputs.custom_tag}},enable=${{inputs.custom_tag}}
+            type=raw,value=${{inputs.custom_tag}},enable=${{inputs.custom_tag != ''}}
             type=sha,enable=true,priority=100,prefix=,suffix=_${{ github.run_number }},format=short
       - run: |
           echo "Tags: ${{ steps.meta.outputs.tags }}"
