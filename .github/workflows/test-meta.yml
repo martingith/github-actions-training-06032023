@@ -20,4 +20,3 @@ jobs:
             type=sha,enable=true,priority=100,prefix=,suffix=_${{ github.run_number }},format=short
       - run: |
           echo "Tags: ${{ steps.meta.outputs.tags }}"
-          echo "Tags: ${{ steps.meta.outputs.images }}"
