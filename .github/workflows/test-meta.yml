@@ -1,0 +1,22 @@
+name: GitHub Actions test var
+on: 
+  workflow_dispatch:
+    inputs:
+      custom_tag:
+        description: "Custom tag to push"
+        required: false
+        type: string
+jobs:
+  Testmeta:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{github.repository}}
+          tags: |
+            type=raw,value=latest,enable=${{inputs.latest}}
+      - run: |
+          echo "Tags: ${{ steps.meta.outputs.tags }}"
+          echo "Tags: ${{ steps.meta.outputs.images }}"
